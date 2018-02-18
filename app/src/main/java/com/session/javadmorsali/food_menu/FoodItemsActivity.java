@@ -71,7 +71,7 @@ public class FoodItemsActivity extends ListActivity {
     protected void onListItemClick(ListView l, View v, int position, long id) {
 
         Intent intent = new Intent(this, FoodItemDetailesActivity.class);
-        intent.putExtra("fooditemId", position);
+        intent.putExtra("fooditemId", id);
         intent.putExtra("foodtypeId", FoodTypeId);
         startActivity(intent);
 

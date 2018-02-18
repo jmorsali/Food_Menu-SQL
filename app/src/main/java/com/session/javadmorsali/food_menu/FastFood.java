@@ -51,6 +51,18 @@ class FastFood implements IFoodItem{
         return imageResourceId;
     }
 
+    @Override
+    public boolean getIs_Favorite() {
+        return false;
+    }
+
+    @Override
+    public void setIs_Favorite(boolean value) {
+
+    }
+
+
+
     public void setImageResourceId(int imageResourceId) {
         this.imageResourceId = imageResourceId;
     }

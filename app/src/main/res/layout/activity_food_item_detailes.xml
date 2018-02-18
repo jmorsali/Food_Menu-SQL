@@ -28,4 +28,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="توضیحات" />
+
+    <ToggleButton android:id="@+id/tglbtnfavorite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"   android:textOn="دوست دارم" android:textOff="علاقه ای ندارم"
+        android:onClick="tglbtnfavorite_Clicked"/>
 </LinearLayout>

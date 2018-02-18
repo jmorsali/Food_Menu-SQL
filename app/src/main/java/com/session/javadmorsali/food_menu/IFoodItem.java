@@ -11,4 +11,8 @@ interface IFoodItem {
     String getDescription();
 
     int getImageResourceId();
+
+    boolean getIs_Favorite();
+
+    void setIs_Favorite(boolean value);
 }

@@ -4,11 +4,11 @@ package com.session.javadmorsali.food_menu;
  * Created by jmorsali on 2018-02-04.
  */
 
-public class Drink implements IFoodItem{
-    public String Description;
-    public String Name;
-    public int imageResourceId;
-
+public class Drink implements IFoodItem {
+    String Description;
+    String Name;
+    int imageResourceId;
+    boolean Is_Favorite;
 
     public Drink(String name, String Description, int imageResourceId) {
         this.Name = name;
@@ -19,13 +19,13 @@ public class Drink implements IFoodItem{
     public static final Drink[] Drinks = {
             new Drink("قهوه ترک", "یک فنجان قهوه اصیل ترک به همراه شیر و شکر", R.drawable.cappuccino),
             new Drink("آب پرتقال", "آب پرتقال طبیعی شمال", R.drawable.orange),
-            new Drink("میلک شیک","شکلات طبیعی سوئیسی به همراه شیر", R.drawable.filter),
+            new Drink("میلک شیک", "شکلات طبیعی سوئیسی به همراه شیر", R.drawable.filter),
             new Drink("قهوه فرانسوی", "قهوه اصیل فرانسه بدون شکر و شیر", R.drawable.latte),
     };
 
     @Override
     public String toString() {
-        return getName() + " :: "+getDescription() + " :: ";
+        return getName() + " :: " + getDescription() + " :: ";
     }
 
     public String getDescription() {
@@ -46,6 +46,16 @@ public class Drink implements IFoodItem{
 
     public int getImageResourceId() {
         return imageResourceId;
+    }
+
+    @Override
+    public boolean getIs_Favorite() {
+        return Is_Favorite;
+    }
+
+    @Override
+    public void setIs_Favorite(boolean value ) {
+        Is_Favorite=value;
     }
 
     public void setImageResourceId(int imageResourceId) {

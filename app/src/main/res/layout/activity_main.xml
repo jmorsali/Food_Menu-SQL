@@ -4,23 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.session.javadmorsali.food_menu.MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context="com.session.javadmorsali.food_menu.MainActivity">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:gravity="center"
         android:text="رستوران ::: جواد مرسلی"
-        android:textSize="25dp"
-        android:gravity="center" android:textColor="@color/colorPrimaryDark"/>
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="25dp" />
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:src="@drawable/starbuzz_logo"
-        />
+        android:src="@drawable/starbuzz_logo" />
+
     <ListView
+        android:id="@+id/list_option"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/list_option"
-        android:entries="@array/options" />
+        android:entries="@array/options" android:layout_weight="1" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="لیست موارد دلخواه شما"
+        android:textSize="24sp" android:layoutDirection="rtl" android:textDirection="rtl" android:layout_gravity="center" />
+
+    <ListView
+        android:id="@+id/list_faivorite"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" android:layout_weight="1"/>
 </LinearLayout>

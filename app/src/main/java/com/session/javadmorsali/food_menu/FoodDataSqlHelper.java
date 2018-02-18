@@ -13,7 +13,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class FoodDataSqlHelper extends SQLiteOpenHelper {
 
     static String dbName = "starBuzz";
-    static int db_version = 1;
+    static int db_version = 2;
 
     public FoodDataSqlHelper(Context context) {
         super(context, dbName, null, db_version);
@@ -27,23 +27,35 @@ public class FoodDataSqlHelper extends SQLiteOpenHelper {
                 "DESCRIPTION TEXT," +
                 "IMAGE_RESOURCE_ID INTEGER);"
         );
-        ContentValues cv = new ContentValues();
-        cv.put("NAME", "TORK 1");
-        cv.put("DESCRIPTION", "Desc 1");
-        cv.put("IMAGE_RESOURCE_ID", R.drawable.p1);
-        long res1 = db.insert("DRINKS", null, cv);
 
-        cv = new ContentValues();
-        cv.put("NAME", "Orange");
-        cv.put("DESCRIPTION", "cup of orange");
-        cv.put("IMAGE_RESOURCE_ID", R.drawable.p2);
-        long res = db.insert("DRINKS", null, cv);
-
+        insertDrink(db, "TORK 1", "Desc 1", R.drawable.p1);
+        insertDrink(db, "Orange 1", "cup of orange", R.drawable.p2);
 
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        onCreate(db);
+
+        updateDB(db, oldVersion, newVersion);
+    }
+
+    private static void insertDrink(SQLiteDatabase db, String name, String description, int resourceId) {
+        ContentValues cv = new ContentValues();
+        cv.put("NAME", name);
+        cv.put("DESCRIPTION", description);
+        cv.put("IMAGE_RESOURCE_ID", resourceId);
+        long res1 = db.insert("DRINKS", null, cv);
+
+
+    }
+
+    private void updateDB(SQLiteDatabase db, int oldVersion, int newVersion) {
+        if (oldVersion > 1) {
+            onCreate(db);
+        }
+        insertDrink(db, "Filter", "our best drip cofee", R.drawable.filter);
+        if (oldVersion < 2) {
+            db.execSQL("ALTER TABLE DRINKS ADD COLUMN FAVORITE NUMERIC;");
+        }
     }
 }
