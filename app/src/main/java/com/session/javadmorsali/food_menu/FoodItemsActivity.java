@@ -40,17 +40,7 @@ public class FoodItemsActivity extends ListActivity {
                 SQLiteDatabase db = helper.getWritableDatabase();
                 //Cursor cursor = db.query("DRINKS", new String[]{"_id", "NAME"}, null, null, null, null, null);
 
-                ContentValues cv = new ContentValues();
-                cv.put("NAME", "Orange");
-                cv.put("DESCRIPTION", "cup of orangeuce");
-                cv.put("IMAGE_RESOURCE_ID", 3);
-                long res1 = db.insert("DRINKS", null, cv);
-
-
                 Cursor cursor = db.rawQuery("SELECT * FROM DRINKS;", null);
-                final boolean b = cursor.moveToFirst();
-                //String col1=cursor.getString(0);
-                //String col2=cursor.getString(1);
 
                 CursorAdapter adapter = new SimpleCursorAdapter(this, android.R.layout.simple_expandable_list_item_1,
                         cursor, new String[]{"NAME"}, new int[]{android.R.id.text1}, 0);
