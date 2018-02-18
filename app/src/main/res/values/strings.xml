@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Food_Menu_SQL</string>
+    <string-array name="options">
+        <item>غذای ایرانی</item>
+        <item>فست فود</item>
+        <item>غذای ایتالیایی</item>
+        <item>نوشیدنی</item>
+        <item>سالاد</item>
+    </string-array>
+</resources>
