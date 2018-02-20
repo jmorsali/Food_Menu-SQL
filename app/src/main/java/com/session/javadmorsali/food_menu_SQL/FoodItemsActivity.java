@@ -1,4 +1,4 @@
-package com.session.javadmorsali.food_menu;
+package com.session.javadmorsali.food_menu_SQL;
 
 import android.app.ListActivity;
 import android.content.ContentValues;

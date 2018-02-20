@@ -1,4 +1,4 @@
-package com.session.javadmorsali.food_menu;
+package com.session.javadmorsali.food_menu_SQL;
 
 /**
  * Created by jmorsali on 2018-02-10.

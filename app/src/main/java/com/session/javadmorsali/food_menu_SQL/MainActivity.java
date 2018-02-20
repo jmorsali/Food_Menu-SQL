@@ -1,4 +1,4 @@
-package com.session.javadmorsali.food_menu;
+package com.session.javadmorsali.food_menu_SQL;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -8,10 +8,10 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.CursorAdapter;
@@ -37,7 +37,7 @@ public class MainActivity extends Activity {
         try {
             FoodDataSqlHelper helper = new FoodDataSqlHelper(this);
             db = helper.getReadableDatabase();
-            favoritecursor = db.query("DRINKS", new String[]{"_id", "NAME"}, "FAVORITE =1 ", null, null, null, null);
+            favoritecursor = db.rawQuery("SELECT * FROM DRINKS WHERE FAVORITE = 1 ;", null);
             CursorAdapter favoriteAdapter = new SimpleCursorAdapter(MainActivity.this, android.R.layout.simple_expandable_list_item_2, favoritecursor, new String[]{"NAME"}, new int[]{android.R.id.text1}, 0);
             listview_faivorite.setAdapter(favoriteAdapter);
 
@@ -54,7 +54,6 @@ public class MainActivity extends Activity {
             FoodDataSqlHelper helper = new FoodDataSqlHelper(this);
             db = helper.getReadableDatabase();
             Cursor newcursor = db.rawQuery("SELECT * FROM DRINKS WHERE FAVORITE = 1 ;", null);
-            boolean res = newcursor.moveToFirst();
             ListView listview_faivorite = (ListView) findViewById(R.id.list_faivorite);
             CursorAdapter adapter = (CursorAdapter) listview_faivorite.getAdapter();
             adapter.changeCursor(newcursor);
@@ -128,6 +127,41 @@ public class MainActivity extends Activity {
                 })
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .show();
+    }
+
+
+    private void showDialog()
+    {
+        String text2 = "<font color=#212121>Medi Notification</font>";//for custom title color
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.Theme_AppCompat_Dialog_Alert);
+        builder.setTitle(Html.fromHtml(text2));
+
+        String text3 = "<font color=#A4A4A4>You can complete your profile now or start using the app and come back later</font>";//for custom message
+        builder.setMessage(Html.fromHtml(text3));
+
+        builder.setPositiveButton("DELETE", new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
+               Toast toast = Toast.makeText(getApplicationContext(), "DELETE", Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
+            }
+        });
+
+        builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
+              Toast  toast = Toast.makeText(getApplicationContext(), "CANCEL", Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
+            }
+        });
+        builder.show();
     }
 }
 

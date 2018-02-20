@@ -1,4 +1,4 @@
-package com.session.javadmorsali.food_menu;
+package com.session.javadmorsali.food_menu_SQL;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -25,8 +25,9 @@ public class FoodDataSqlHelper extends SQLiteOpenHelper {
                 "_id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "NAME TEXT," +
                 "DESCRIPTION TEXT," +
-                "IMAGE_RESOURCE_ID INTEGER);"
-        );
+                "IMAGE_RESOURCE_ID INTEGER,"+
+                "FAVORITE INTEGER)");
+
 
         insertDrink(db, "TORK 1", "Desc 1", R.drawable.p1);
         insertDrink(db, "Orange 1", "cup of orange", R.drawable.p2);
@@ -53,7 +54,6 @@ public class FoodDataSqlHelper extends SQLiteOpenHelper {
         if (oldVersion > 1) {
             onCreate(db);
         }
-        insertDrink(db, "Filter", "our best drip cofee", R.drawable.filter);
         if (oldVersion < 2) {
             db.execSQL("ALTER TABLE DRINKS ADD COLUMN FAVORITE NUMERIC;");
         }

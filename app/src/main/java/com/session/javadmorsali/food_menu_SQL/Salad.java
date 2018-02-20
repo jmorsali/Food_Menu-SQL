@@ -1,27 +1,27 @@
-package com.session.javadmorsali.food_menu;
+package com.session.javadmorsali.food_menu_SQL;
 
 /**
  * Created by jmorsali on 2018-02-04.
  */
 
-class IranianFood implements IFoodItem {
+class Salad implements IFoodItem{
 
     public String Description;
     public String Name;
     public int imageResourceId;
 
 
-    public IranianFood(String name, String Description, int imageResourceId) {
+    public Salad(String name, String Description, int imageResourceId) {
         this.Name = name;
         this.Description = Description;
         this.imageResourceId = imageResourceId;
     }
 
-    public static final IranianFood[] IranianFood = {
-            new IranianFood("چلو کباب گوسفندی", "گوشت گوسفند + برنج", R.drawable.p1),
-            new IranianFood("جوجه کباب", "ران مرغ", R.drawable.p2),
-            new IranianFood("قرمه سبزی","سبزی تازه + گوشت گوسفندی", R.drawable.p3),
-            new IranianFood("قیمه", "گوشت گوسفندی + سیب زمینی تازه", -1),
+    public static final Salad[] Salads = {
+            new Salad("سالاد شیرازی", "سالاد ایرانی اصیل", R.drawable.p4),
+            new Salad("سالاد کلم", "کلم + کشمش", R.drawable.p5),
+            new Salad("سالاد فصل","کاهو + گوجه + خیار", R.drawable.p6),
+            new Salad("ماست موسیر", "ماست موسیر تازه", -1),
     };
 
     @Override
